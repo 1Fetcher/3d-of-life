@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>3D of life </title>
+        <script>
+        body 
+{
+    margin:0;
+    padding:0;
+    background-color: #e0e0e0;
+}
+
+h2{
+    text-align: center;
+    padding:5px;
+}
+
+.goal-txt{
+    padding-top: 40px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.d-txt{
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    margin-top:40px;
+}
+
+.msg{
+    font-weight: bold;
+    border-left:5px solid green; 
+    padding:20px;  
+    margin-top:20px;
+    text-align: center;
+    background: linear-gradient(225deg, #cacaca, #f0f0f0);
+    box-shadow:  -20px 20px 60px #bebebe,
+             20px -20px 60px #ffffff;
+
+  
+
+}
+._d,._g{
+
+    height:100px;
+    width:100px;    
+    margin:auto;
+    border-radius: 50%;
+    background: linear-gradient(225deg, #cacaca, #f0f0f0);
+    box-shadow:  -20px 20px 60px #bebebe,
+             20px -20px 60px #ffffff;
+
+   }
+
+.mine{
+    width:350px;
+    margin: auto;
+}
+
+.d1,.d2,.d3{    
+    display: inline-block;
+    margin: 5px;
+    margin-top: 40vh;
+}
+
+
+._g {
+}
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>3D of life</h2>
+           
+            <div 
+            id="goal"
+            class="_g goal"
+            title="Success"
+            ondragover="onDragOver(event);"
+            ondrop="onDrop(event);"
+            ontouchend = "onDragOver(event);"
+            >
+            <p class="goal-txt">Success</p>
+            </div>
+            
+            
+
+            <div class="mine">
+            <div 
+                class="_d d1"
+                id="d1"
+                title="Decision"
+                draggable="true"
+                ondragstart="onDragStart(event);"
+                ontouchstart="onDragStart(event);"
+                ><p class="d-txt">D1</p></div>
+           
+           
+            <div             
+            class="_d d2"
+            id="d2"
+            title="Dedication"
+            draggable="true"
+            ondragstart="onDragStart(event);"
+            ontouchstart="onDragStart(event);"
+             ><p class="d-txt">D2</p></div>
+            <div 
+            class="_d d3"
+            id="d3" 
+            title="Discipline"
+            draggable="true"
+            ondragstart="onDragStart(event);"
+            ontouchstart="onDragStart(event);"
+
+            ><p class="d-txt">D2</p></div>
+
+            <div id="msg" class="msg">
+                    Put D1,D2,D3 To Achive Success
+            </div>
+            </div>
+
+        </div>
+<script>
+
+let ds = [];
+function onDragStart(event) {
+  event.dataTransfer.setData('text/plain', event.target.id);    
+  event.currentTarget.style.backgroundColor = 'green';
+  document.getElementById('msg').innerText = event.target.title;
+}
+
+function onDragOver(event) {
+
+  event.preventDefault();
+}
+
+function onDrop(event) {      
+  const id = event
+    .dataTransfer
+    .getData('text');
+
+  const draggableElement = document.getElementById(id);
+  draggableElement.style.display = "none";
+  ds.push(event.target.title);
+  
+  const dropzone = event.target;
+  dropzone.appendChild(draggableElement);
+  event.dataTransfer.clearData();
+      
+    if(ds.length == 3){
+        document.getElementById('msg').innerText = 'Congratulations! Success Achived';
+        document.getElementById('goal').style.display='none';
+    }
+
+}
+
+</script>
+
+
+    </body>
+</html>
