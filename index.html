@@ -143,12 +143,12 @@ function onDrop(event) {
 
   const draggableElement = document.getElementById(id);
   draggableElement.style.display = "none";
-  ds.push(draggableElement.target.title);
+  ds.push(draggableElement.getAttribute('title'));
   
   const dropzone = event.target;
   dropzone.appendChild(draggableElement);
   event.dataTransfer.clearData();
-  document.getElementById('msg').innerText = draggableElement.target.title+' Added';
+  document.getElementById('msg').innerText = draggableElement.getAttribute('title')+' Added';
 
     if(ds.length == 3){
         document.getElementById('msg').innerText = 'Congratulations! Success Achived';
