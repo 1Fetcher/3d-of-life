@@ -139,15 +139,15 @@ function onDragOver(event) {
 function onDrop(event) {      
   const id = event
     .dataTransfer
-    .getData('text');
+    .getData('text');  
 
-  const draggableElement = document.getElementById(id);
-  draggableElement.style.display = "none";
-  ds.push(draggableElement.getAttribute('title'));
+  const draggableElement = document.getElementById(id); 
   
   const dropzone = event.target;
   dropzone.appendChild(draggableElement);
   event.dataTransfer.clearData();
+   draggableElement.style.display = "none";
+  ds.push(draggableElement.getAttribute('title'));
   document.getElementById('msg').innerText = draggableElement.getAttribute('title')+' Added';
 
     if(ds.length == 3){
