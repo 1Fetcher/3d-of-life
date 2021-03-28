@@ -128,7 +128,7 @@ let ds = [];
 function onDragStart(event) {
   event.dataTransfer.setData('text/plain', event.target.id);    
   event.currentTarget.style.backgroundColor = 'green';
-  document.getElementById('msg').innerText = event.target.title;
+  document.getElementById('msg').innerText = 'Adding '.event.target.title.' For Your Success';
 }
 
 function onDragOver(event) {
@@ -148,7 +148,8 @@ function onDrop(event) {
   const dropzone = event.target;
   dropzone.appendChild(draggableElement);
   event.dataTransfer.clearData();
-      
+  document.getElementById('msg').innerText = event.target.title.' Added';
+
     if(ds.length == 3){
         document.getElementById('msg').innerText = 'Congratulations! Success Achived';
         document.getElementById('goal').style.display='none';
